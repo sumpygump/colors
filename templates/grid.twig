@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block title %}{{ colortitle }}{% endblock %}
+{% block content %}
+<div class="grid">
+    {% for color in colors -%}
+        <div class="color-rect"><a href="/?v=color&c={{ color.hex|lower }}">
+            <div class="splot{% if color.name == "white" %} border-dashed{% endif %}" style="background-color: {{ color.csshex }}"></div>
+            <div class="flabel">{{ color.csshex|lower }}{% if color.name %}<br />({{ color.name}}){% endif %}</div>
+            {% if show_rgb_graphs -%}
+            <div class="rgb-graph">
+                <span class="bar"><span class="bar-r" style="height:{{ color.rpercent*100 }}%"></span></span>
+                <span class="bar"><span class="bar-g" style="height:{{ color.gpercent*100 }}%"></span></span>
+                <span class="bar"><span class="bar-b" style="height:{{ color.bpercent*100 }}%"></span></span>
+            </div>
+            {% endif -%}
+        </a></div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{
+    "name": "sumpygump/colorz",
+    "description": "CSS color showcase site",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jansen Price",
+            "email": "jansen.price@gmail.com"
+        }
+    ],
+    "require": {
+        "mexitek/phpcolors": "dev-master",
+        "twig/twig": "~1.18"
+    },
+    "autoload": {
+        "psr-4" : {
+            "Colorz\\" : "src/Colorz"
+        }
+    }
+}

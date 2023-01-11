@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+
+require_once 'vendor/autoload.php';
+
+use Symfony\Component\DomCrawler\Crawler;
+
+$html = file_get_contents('colors.html');
+
+$crawler = new Crawler($html);
+
+$crawler = $crawler->filter('.colour-list');
+
+$colors = array();
+foreach ($crawler->children() as $element) {
+    $color = getColorObject($element->nodeValue);
+    $colors[] = $color;
+}
+
+$json = json_encode($colors);
+
+print $json;
+
+function getColorObject($text)
+{
+    $text = trim($text);
+
+    $vals = explode("\n", $text);
+
+    $color = new StdClass();
+    $color->name = trim($vals[0]);
+    $color->hex = trim($vals[2]);
+    $color->rgb = trim($vals[3]);
+
+    return $color;
+}

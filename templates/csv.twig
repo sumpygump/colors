@@ -1,0 +1,3 @@
+{% for color in colors %}
+"{{ color.csshex }}","{{ color.name }}",{{ (color.rpercent*100)|round(2) }},{{ (color.gpercent*100)|round(2) }},{{ (color.bpercent*100)|round(2) }}
+{% endfor %}

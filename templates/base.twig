@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Colors{% endblock %}</title>
+        <style>
+            body,html {margin:0; font-family: monospace;}
+            ul{margin:0;padding-left:0; height: 100%;}
+            a {color: #333333; }
+            .content { width: 100%; height: 100%; margin: 0; position: absolute; bottom: 0;}
+            .fill { display: block; height: 100%; width: 100%; text-align:center; font-size: 50px;}
+            .stripe { display: block; height: auto; text-align:center; font-size: 50px;}
+            .dark-bg { color: #ffffff; }
+            .label {display:block; padding-top: 10px; padding-bottom: 10px;}
+            .fill .label {display:block; padding-top: 25%;}
+            .return a { text-decoration: none; color: #000000; }
+            .dark-bg .return a { color: #ffffff; }
+            .menu { margin: 0 auto; text-align: center; padding-top: 18px; display: flex; justify-content: space-between; width: 1180px;}
+            .opts { text-align: right; }
+
+            .grid {width: 1200px; display: flex; align-content: space-evenly; margin: 0 auto; padding-top: 20px; flex-wrap: wrap;}
+            .color-rect {width: 100px; padding-bottom: 8px; position: relative;}
+            .color-rect a { text-decoration: none; }
+            .splot {width: 90px; height: 90px; margin: 0 auto; border-radius: 50%; box-sizing: border-box;}
+            .border-dashed {border:1px dashed #a9a9a9;}
+            .flabel {font-size: 10px; font-family: monospace; text-align: center; padding-top: 5px; overflow: hidden;}
+
+            .blocks {width: 1314px; display: flex; align-content: space-evenly; margin: 0 auto; padding-top: 20px; flex-wrap: wrap;}
+            .block {width: 40px; height: 40px;margin-bottom: 1px; margin-right: 1px;}
+            .has-name {border: 2px dotted white; width: 36px; height: 36px;}
+
+            .gradient-block { width: 40px; height: 40px; margin-bottom: 1px; margin-right: 1px; }
+
+            .rgb-graph { height: 16px; border: 1px solid #dcdcdc; width: 14px; display: flex; padding: 1px; position: absolute; top: 87px; left: 8px; box-sizing: content-box;}
+            .rgb-graph .bar { display: flex; align-items: flex-end; height: 16px; width: 4px; margin-right: 1px; }
+            .rgb-graph .bar-r { background-color: red; width: 4px; display: block; }
+            .rgb-graph .bar-g { background-color: #00a900; width: 4px; display: block; }
+            .rgb-graph .bar-b { background-color: blue; width: 4px; display: block; }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            {% if show_menu -%}
+            <div class="menu">
+                <div class="sig"></div>
+                <div class="links"><a href="/">COTD</a> | <a href="?v=basic">basic</a> | <a href="?v=hues">hues</a> | <a href="?v=spread&mask=00xx00">spread</a> | <a href="?v=all">all</a> | <a href="?v=color">random</a></div>
+                <div class="opts">
+                    {% if params.g %}
+                    <a href="/?v={{ params.v }}&g=0&sort={{ params.sort }}">Hide rgb</a>
+                    {% else %}
+                    <a href="/?v={{ params.v }}&g=1&sort={{ params.sort }}">Show rgb</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+            {%- block content %}{% endblock %}
+        </div>
+    </body>
+</html>

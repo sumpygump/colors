@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+
+{% block title %}{{ colortitle }}{% endblock %}
+{% block content %}
+    <div class="blocks">
+{% for set in colorsets -%}
+        <div><a href="/?v=spread&mask={{ set.mask }}">
+            <div class="gradient-block" style="background: linear-gradient(135deg, {{ set.colors[0].csshex }} 0%, {{ set.colors[255].csshex }} 100%);"></div>
+        </a></div>
+{% endfor %}
+    </div>
+{% endblock %}

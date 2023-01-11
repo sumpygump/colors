@@ -1,0 +1,9 @@
+{% extends "base.twig" %}
+
+{% block title %}{{ colortitle }}{% endblock %}
+{% block content -%}
+            <div class="fill{% if color.isDark %} dark-bg{% endif %}" style="background-color: {{ color.csshex }}">
+                <span class="return"><a href="/?v=all">^</a></span>
+                <span class="label" title="{{ color.printHsl }}">{{ color.name }} ({{ color.csshex|lower }})</span>
+            </div>
+{% endblock %}

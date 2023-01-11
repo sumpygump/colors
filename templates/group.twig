@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block title %}{{ colortitle }}{% endblock %}
+{% block content %}
+<ul>
+    {% for color in colors %}
+    <li class="stripe {% if color.isDark %}dark-bg{% endif %}" style="background-color: {{ color.csshex }}">
+    <span class="label">{{ color.name }} ({{color.csshex}})</span>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+
+{% block title %}{{ colortitle }}{% endblock %}
+{% block content %}
+<div class="blocks">
+    {% for color in colors -%}
+        <div><a href="/?v=color&c={{ color.hex|lower }}">
+            <div class="block{% if color.name %} has-name{% endif %}" title="{{ color.csshex|lower }}" style="background-color: {{ color.csshex }}"></div>
+        </a></div>
+    {% endfor %}
+</div>
+{% endblock %}
