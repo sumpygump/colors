@@ -1,6 +1,16 @@
 <?php
 
-$loader = require_once 'vendor/autoload.php';
+if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
+    die(
+        '<div style="margin:0 auto;width: 400px;text-align:center;margin-top:200px;'
+        . 'padding:20px;background-color:tomato;border-radius:10px;'
+        . 'border:1px solid #b8b8b8;border-bottom-width:2px;">'
+        . 'Autoloader not found. Run `composer install`'
+        . '</div>'
+    );
+}
+
+$loader = include_once __DIR__ . '/vendor/autoload.php';
 
 use Colorz\Repository;
 
